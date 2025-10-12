@@ -63,8 +63,6 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-work
     { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
-  ]
-}
   service-worker.js
 const CACHE = 'pubg-coach-pro-v1';
 const ASSETS = ['/', '/index.html', '/css/style.css', '/js/app.js', '/manifest.json', '/icons/icon-192.png', '/icons/icon-512.png'];
