@@ -1,3 +1,6 @@
+/ (repo root)
+
+  index.html
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,6 +49,8 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-work
 </script>
 </body>
 </html>
+
+  manifest.json
 {
   "name":"PUBG Coach Pro",
   "short_name":"PUBG Coach Pro",
@@ -58,11 +63,29 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-work
     {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
+  service-worker.js
 const CACHE = 'pubg-coach-pro-v1';
 const ASSETS = ['/', '/index.html', '/css/style.css', '/js/app.js', '/manifest.json', '/icons/icon-192.png', '/icons/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
+
+  netlify.toml
+[build]
+  publish = "."
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+  README.md
+PUBG Coach Pro — PWA final package
+Replace firebase keys in js/app.js if you want to enable Cloud sync and login.
+Deploy via Netlify (connect to GitHub or use drag-and-drop).
+
+  /css/style.css
 :root{--bg:#071028;--accent:#d4af37;--muted:#9fb0d8}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#081a33,#071028);color:#eaf3ff}
@@ -77,6 +100,8 @@ nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .row{display:flex;gap:8px;align-items:center}
 input.input{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;width:100%}
 footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+  /js/app.js
 // PUBG Coach Pro - client-side features (no server required for basic tools)
 console.log('PUBG Coach Pro loaded');
 
@@ -166,14 +191,9 @@ document.getElementById('btn-nick')?.addEventListener('click', ()=> {
     document.getElementById('copy').onclick = ()=>{ navigator.clipboard.writeText(name).then(()=>alert('Copied: '+name)); };
   });
 });
-exports.handler = async function(event, context) {
-  return { statusCode: 200, body: JSON.stringify({ ok: true, note: 'netlify function placeholder' }) };
-};
-[build]
-  publish = "."
-  command = "npm run build"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  /icons/icon-192.png
+  /icons/icon-512.png
+  /assets/sounds/victory_remix.mp3
+  /nickname-generator/README.txt
+  /netlify/functions/db-query.js   (opcional, placeholder)
