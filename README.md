@@ -177,7 +177,3 @@ exports.handler = async function(event, context) {
   from = "/*"
   to = "/index.html"
   status = 200
-PUBG Coach Pro — PWA final package
-Replace firebase keys in js/app.js if you want to enable Cloud sync and login.
-Deploy via Netlify (connect to GitHub or use drag-and-drop).
-
