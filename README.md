@@ -57,8 +57,10 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-work
   "display": "standalone",
   "background_color": "#071028",
   "theme_color": "#0d2347",
- json
-  "icons": [
+ 
+json
+{
+ "icons": [
     {
       "src": "./icons/
   icon-192.png",
