@@ -180,3 +180,4 @@ exports.handler = async function(event, context) {
 PUBG Coach Pro — PWA final package
 Replace firebase keys in js/app.js if you want to enable Cloud sync and login.
 Deploy via Netlify (connect to GitHub or use drag-and-drop).
+
