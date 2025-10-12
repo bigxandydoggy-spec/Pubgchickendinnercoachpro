@@ -74,6 +74,7 @@ json
       "type": "image/png"
     }
   ]
+git add icons/icon-192.png
 }
   service-worker.js
 const CACHE = 'pubg-coach-pro-v1';
