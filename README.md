@@ -73,7 +73,7 @@ self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then
   netlify.toml
 [build]
   publish = "."
-  command = "npm run build"
+  command = ""
 
 [[redirects]]
   from = "/*"
