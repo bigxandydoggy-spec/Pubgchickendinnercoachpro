@@ -57,7 +57,6 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-work
   "display": "standalone",
   "background_color": "#071028",
   "theme_color": "#0d2347",
- 
 json
 {
  "icons": [
@@ -74,9 +73,11 @@ json
       "type": "image/png"
     }
   ]
+ bash 
 git add icons/icon-192.png
 }
-  service-worker.js
+  
+service-worker.js
 const CACHE = 'pubg-coach-pro-v1';
 const ASSETS = ['/', '/index.html', '/css/style.css', '/js/app.js', '/manifest.json', '/icons/icon-192.png', '/icons/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
