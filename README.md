@@ -620,19 +620,15 @@ window.translations = {};
 
 /**
  * Carrega um idioma e aplica as traduções
- * @param {string} lang - Código do idioma (en, pt, ja, ko, zh)
  */
 async function loadLanguage(lang) {
     try {
         if (!window.translations[lang]) {
             const response = await fetch(`locales/${lang}.json`);
-            if (!response.ok) {
-                throw new Error(`Idioma ${lang} não encontrado`);
-            }
+            if (!response.ok) throw new Error(`Idioma ${lang} não encontrado`);
             window.translations[lang] = await response.json();
         }
         
-        // Aplica traduções a elementos com data-i18n
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (window.translations[lang][key]) {
@@ -640,7 +636,6 @@ async function loadLanguage(lang) {
             }
         });
         
-        // Aplica placeholders traduzidos
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
             if (window.translations[lang][key]) {
@@ -648,203 +643,117 @@ async function loadLanguage(lang) {
             }
         });
         
-        console.log(`Idioma carregado: ${lang}`);
-        
     } catch (error) {
-        console.error(`Erro ao carregar idioma ${lang}:`, error);
-        // Fallback para inglês
-        if (lang !== 'en') {
-            loadLanguage('en');
-        }
+        console.error(`Erro: ${error}`);
+        if (lang !== 'en') loadLanguage('en');
     }
 }
 
 /**
- * Muda o idioma da aplicação
- * @param {string} lang - Código do idioma
+ * Muda o idioma
  */
 function changeLanguage(lang) {
-    document.getElementById('languageSelector').value = lang;
+    const selector = document.getElementById('languageSelector');
+    if (selector) selector.value = lang;
     loadLanguage(lang);
     localStorage.setItem('preferredLanguage', lang);
 }
 
-// === CONTROLE DE SEÇÕES ===
 /**
- * Mostra uma seção específica
- * @param {string} sectionId - ID da seção a ser mostrada
+ * Mostra uma seção
  */
 function showSection(sectionId) {
-    // Esconde todas as seções
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
-    
-    // Remove classe active de todos os botões
     document.querySelectorAll('.nav-button').forEach(button => {
         button.classList.remove('active');
     });
     
-    // Mostra a seção selecionada
     const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
+    if (targetSection) targetSection.classList.add('active');
     
-    // Ativa o botão correspondente
     const activeButton = document.querySelector(`[data-section="${sectionId}"]`);
-    if (activeButton) {
-        activeButton.classList.add('active');
-    }
+    if (activeButton) activeButton.classList.add('active');
 }
 
-// === CALCULADORA DE RECOMPENSAS ===
 /**
- * Calcula recompensas baseadas em kills e posição
+ * Calcula recompensas
  */
 function calculateRewards() {
     const kills = parseInt(document.getElementById('kills').value) || 0;
     const placement = parseInt(document.getElementById('placement').value) || 100;
     const currentLang = document.getElementById('languageSelector').value;
     
-    // Validação
     if (kills < 0 || kills > 50) {
-        showMessage('Please enter a valid number of kills (0-50)', 'error');
+        alert('Please enter valid kills (0-50)');
         return;
     }
-    
     if (placement < 1 || placement > 100) {
-        showMessage('Please enter a placement between 1 and 100', 'error');
+        alert('Please enter valid placement (1-100)');
         return;
     }
     
-    // Cálculo da recompensa base
-    let baseReward = calculateBaseReward(placement);
+    let baseReward = 0;
+    if (placement === 1) baseReward = 1000;
+    else if (placement <= 3) baseReward = 800;
+    else if (placement <= 10) baseReward = 500;
+    else if (placement <= 25) baseReward = 200;
+    else baseReward = 50;
+    
     const killBonus = kills * 20;
     const total = baseReward + killBonus;
     
-    // Exibe o resultado
-    displayResult(currentLang, placement, baseReward, killBonus, total);
-}
-
-/**
- * Calcula recompensa base baseada na posição
- */
-function calculateBaseReward(placement) {
-    if (placement === 1) return 1000;
-    if (placement <= 3) return 800;
-    if (placement <= 10) return 500;
-    if (placement <= 25) return 200;
-    return 50;
-}
-
-/**
- * Exibe o resultado do cálculo
- */
-function displayResult(lang, placement, baseReward, killBonus, total) {
     const resultElement = document.getElementById('result');
-    const currentTranslations = window.translations[lang];
+    const currentTranslations = window.translations[currentLang];
     
-    if (!resultElement) return;
-    
-    resultElement.innerHTML = `
-        <h3>${currentTranslations?.['resultTitle'] || 'Calculated Reward:'}</h3>
-        <p>${(currentTranslations?.['baseReward'] || 'Placement: {{placement}}th - {{reward}} BP')
-            .replace('{{placement}}', placement)
-            .replace('{{reward}}', baseReward.toLocaleString())}</p>
-        <p>${currentTranslations?.['killReward'] || 'Kills Bonus:'} ${killBonus.toLocaleString()} BP</p>
-        <p style="color: #ffd700; font-size: 1.2rem; font-weight: bold; margin-top: 1rem;">
-            ${(currentTranslations?.['totalReward'] || 'Total: {{total}} BP')
-            .replace('{{total}}', total.toLocaleString())}
-        </p>
-    `;
+    if (resultElement && currentTranslations) {
+        resultElement.innerHTML = `
+            <h3>${currentTranslations['resultTitle'] || 'Calculated Reward:'}</h3>
+            <p>${(currentTranslations['baseReward'] || 'Placement: {{placement}}th - {{reward}} BP')
+                .replace('{{placement}}', placement)
+                .replace('{{reward}}', baseReward)}</p>
+            <p>${currentTranslations['killReward'] || 'Kills Bonus:'} ${killBonus} BP</p>
+            <p style="color: #ffd700; font-weight: bold;">
+                ${(currentTranslations['totalReward'] || 'Total: {{total}} BP')
+                .replace('{{total}}', total)}
+            </p>
+        `;
+    }
 }
 
 /**
- * Mostra mensagem de alerta
- */
-function showMessage(message, type = 'info') {
-    alert(message);
-}
-
-// === INICIALIZAÇÃO ===
-/**
- * Inicializa o aplicativo
+ * Inicializa o app
  */
 function initApp() {
-    console.log('🚀 PUBG Coach Pro inicializando...');
-    
-    // Configura navegação
-    setupNavigation();
-    
-    // Configura calculadora
-    setupCalculator();
-    
-    // Configura idioma
-    setupLanguage();
-    
-    // Mostra seção inicial
-    showSection('home');
-    
-    console.log('✅ PUBG Coach Pro iniciado com sucesso!');
-}
-
-/**
- * Configura os listeners de navegação
- */
-function setupNavigation() {
+    // Navegação
     document.querySelectorAll('.nav-button').forEach(button => {
         button.addEventListener('click', function() {
             const targetSection = this.getAttribute('data-section');
             showSection(targetSection);
         });
     });
-}
-
-/**
- * Configura a calculadora
- */
-function setupCalculator() {
+    
+    // Calculadora
     const calculateBtn = document.getElementById('calculateBtn');
     if (calculateBtn) {
         calculateBtn.addEventListener('click', calculateRewards);
     }
     
-    // Enter também calcula
-    const killsInput = document.getElementById('kills');
-    const placementInput = document.getElementById('placement');
-    
-    if (killsInput) {
-        killsInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') calculateRewards();
-        });
-    }
-    
-    if (placementInput) {
-        placementInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') calculateRewards();
-        });
-    }
-}
-
-/**
- * Configura o sistema de idiomas
- */
-function setupLanguage() {
+    // Idioma
     const languageSelector = document.getElementById('languageSelector');
+    if (languageSelector) {
+        languageSelector.addEventListener('change', function(e) {
+            changeLanguage(e.target.value);
+        });
+        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        languageSelector.value = savedLanguage;
+        loadLanguage(savedLanguage);
+    }
     
-    if (!languageSelector) return;
-    
-    // Listener para mudança de idioma
-    languageSelector.addEventListener('change', function(e) {
-        changeLanguage(e.target.value);
-    });
-    
-    // Carrega idioma salvo ou padrão
-    const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
-    languageSelector.value = savedLanguage;
-    loadLanguage(savedLanguage);
+    // Seção inicial
+    showSection('home');
 }
 
-// === EVENT LISTENERS ===
+// Inicia quando a página carregar
 document.addEventListener('DOMContentLoaded', initApp);
