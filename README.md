@@ -1,5 +1,5 @@
 PubgCoachPro/
-│
+
 ├── 📄 index.html
 <!DOCTYPE html>
 <html lang="en">
@@ -615,7 +615,7 @@ body {
     └── 📁 js/
         └── 📄 script.js
         // === SISTEMA DE INTERNACIONALIZAÇÃO ===
-const translations = {};
+window.translations = {};
 
 /**
  * Carrega um idioma e aplica as traduções
@@ -623,27 +623,27 @@ const translations = {};
  */
 async function loadLanguage(lang) {
     try {
-        if (!translations[lang]) {
+        if (!window.translations[lang]) {
             const response = await fetch(`locales/${lang}.json`);
             if (!response.ok) {
                 throw new Error(`Idioma ${lang} não encontrado`);
             }
-            translations[lang] = await response.json();
+            window.translations[lang] = await response.json();
         }
         
         // Aplica traduções a elementos com data-i18n
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                element.textContent = translations[lang][key];
+            if (window.translations[lang][key]) {
+                element.textContent = window.translations[lang][key];
             }
         });
         
         // Aplica placeholders traduzidos
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
-            if (translations[lang][key]) {
-                element.placeholder = translations[lang][key];
+            if (window.translations[lang][key]) {
+                element.placeholder = window.translations[lang][key];
             }
         });
         
@@ -708,12 +708,12 @@ function calculateRewards() {
     
     // Validação
     if (kills < 0 || kills > 50) {
-        showMessage('Por favor, insira um número válido de kills (0-50)', 'error');
+        showMessage('Please enter a valid number of kills (0-50)', 'error');
         return;
     }
     
     if (placement < 1 || placement > 100) {
-        showMessage('Por favor, insira uma posição entre 1 e 100', 'error');
+        showMessage('Please enter a placement between 1 and 100', 'error');
         return;
     }
     
@@ -742,16 +742,18 @@ function calculateBaseReward(placement) {
  */
 function displayResult(lang, placement, baseReward, killBonus, total) {
     const resultElement = document.getElementById('result');
-    const translations = window.translations[lang];
+    const currentTranslations = window.translations[lang];
+    
+    if (!resultElement) return;
     
     resultElement.innerHTML = `
-        <h3>${translations?.['resultTitle'] || 'Calculated Reward:'}</h3>
-        <p>${(translations?.['baseReward'] || 'Placement: {{placement}}th - {{reward}} BP')
+        <h3>${currentTranslations?.['resultTitle'] || 'Calculated Reward:'}</h3>
+        <p>${(currentTranslations?.['baseReward'] || 'Placement: {{placement}}th - {{reward}} BP')
             .replace('{{placement}}', placement)
             .replace('{{reward}}', baseReward.toLocaleString())}</p>
-        <p>${translations?.['killReward'] || 'Kills Bonus:'} ${killBonus.toLocaleString()} BP</p>
+        <p>${currentTranslations?.['killReward'] || 'Kills Bonus:'} ${killBonus.toLocaleString()} BP</p>
         <p style="color: #ffd700; font-size: 1.2rem; font-weight: bold; margin-top: 1rem;">
-            ${(translations?.['totalReward'] || 'Total: {{total}} BP')
+            ${(currentTranslations?.['totalReward'] || 'Total: {{total}} BP')
             .replace('{{total}}', total.toLocaleString())}
         </p>
     `;
@@ -761,7 +763,7 @@ function displayResult(lang, placement, baseReward, killBonus, total) {
  * Mostra mensagem de alerta
  */
 function showMessage(message, type = 'info') {
-    alert(message); // Em versões futuras pode ser substituído por um toast
+    alert(message);
 }
 
 // === INICIALIZAÇÃO ===
@@ -802,16 +804,26 @@ function setupNavigation() {
  * Configura a calculadora
  */
 function setupCalculator() {
-    document.getElementById('calculateBtn').addEventListener('click', calculateRewards);
+    const calculateBtn = document.getElementById('calculateBtn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', calculateRewards);
+    }
     
     // Enter também calcula
-    document.getElementById('kills').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') calculateRewards();
-    });
+    const killsInput = document.getElementById('kills');
+    const placementInput = document.getElementById('placement');
     
-    document.getElementById('placement').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') calculateRewards();
-    });
+    if (killsInput) {
+        killsInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateRewards();
+        });
+    }
+    
+    if (placementInput) {
+        placementInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateRewards();
+        });
+    }
 }
 
 /**
@@ -819,6 +831,8 @@ function setupCalculator() {
  */
 function setupLanguage() {
     const languageSelector = document.getElementById('languageSelector');
+    
+    if (!languageSelector) return;
     
     // Listener para mudança de idioma
     languageSelector.addEventListener('change', function(e) {
@@ -833,10 +847,3 @@ function setupLanguage() {
 
 // === EVENT LISTENERS ===
 document.addEventListener('DOMContentLoaded', initApp);
-
-// Service Worker para futuro PWA
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        // navigator.serviceWorker.register('/sw.js');
-    });
-}
