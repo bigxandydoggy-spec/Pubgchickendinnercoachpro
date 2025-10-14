@@ -365,7 +365,8 @@ PubgCoachPro/
 </body>
 </html>
 │
-├── 📁 locales/                           🌍 **PASTA IDIOMAS** (criar depois)
+├── 📁 locales/                           
+🌍 **PASTA IDIOMAS** 
 │   ├── 📄 en.json
 {
     "appTitle": "PubgCoachluciodevs",
@@ -594,7 +595,8 @@ PubgCoachPro/
 }
 │   └── 📄 zh.json
 │
-├── 📁 data/                              🗃️ **PASTA DATABASES** (criar depois)
+├── 📁 data/                              
+🗃️ **PASTA DATABASES**
 │   ├── 📄 devices.json
 {
   "devices": [
@@ -1143,8 +1145,9 @@ PubgCoachPro/
 }
 │   └── 📄 sensitivity.json
 │
-└── 📁 assets/                            📦 **PASTA RECURSOS** (criar depois)
-    ├── 📁 audio/                         🎵 **PASTA ÁUDIO** (criar dentro de assets)
+└── 📁 assets/                            
+📦 **PASTA RECURSOS** (criar depois)
+    ├── 📁 audio/                         
     │   ├── 📄 opening-music.mp3
     vlog-beat-background-349853.zip
     │   ├── 📄 m416-shot.mp3
@@ -1154,7 +1157,8 @@ PubgCoachPro/
     │   ├── 📄 m762-shot.mp3
     │   └── 📄 aug-shot.mp3
     │
-    ├── 📁 css/                           🎨 **PASTA ESTILOS** (criar dentro de assets)
+    ├── 📁 css/                           
+    🎨 **PASTA ESTILOS** (criar dentro de assets)
     │   ├── 📄 style.css
     /* ===== VARIÁVEIS E RESET ===== */
 :root {
