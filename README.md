@@ -22,6 +22,7 @@ PubgCoachPro/
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/aim-trainer.css">
 </head>
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <body>
     <!-- Audio Elements -->
     <audio id="backgroundMusic" loop>
