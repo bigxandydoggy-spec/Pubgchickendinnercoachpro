@@ -1145,6 +1145,7 @@ PubgCoachPro/
 └── 📁 assets/                            📦 **PASTA RECURSOS** (criar depois)
     ├── 📁 audio/                         🎵 **PASTA ÁUDIO** (criar dentro de assets)
     │   ├── 📄 opening-music.mp3
+    vlog-beat-background-349853.zip
     │   ├── 📄 m416-shot.mp3
     │   ├── 📄 akm-shot.mp3
     │   ├── 📄 ump45-shot.mp3
