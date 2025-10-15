@@ -29,6 +29,38 @@ PubgCoachPro/
     </header>
 
     <main>
+        <!-- Graphics Optimizer Section -->
+<section id="graphics" class="feature-section">
+    <h2>Graphics Optimizer</h2>
+    <button onclick="optimizeGraphics()">Optimize My Device</button>
+    <div id="graphicsSettings">
+        <p>Click the button above to get optimized graphics settings.</p>
+    </div>
+</section>
+
+<!-- Crate Simulator Section -->
+<section id="crates" class="feature-section">
+    <h2>Crate Simulator</h2>
+    <button onclick="openCrate()">Open Crate (10 UC)</button>
+    <div id="crateResult">
+        <p>Open a crate to see what you get!</p>
+    </div>
+</section>
+
+<!-- Nickname Generator Section -->
+<section id="nickname" class="feature-section">
+    <h2>Nickname Generator</h2>
+    <input type="text" id="baseName" placeholder="Your name" value="Player">
+    <select id="nicknameStyle">
+        <option value="professional">Professional</option>
+        <option value="aggressive">Aggressive</option>
+        <option value="tactical">Tactical</option>
+        <option value="funny">Funny</option>
+    </select>
+    <button onclick="generateNickname()">Generate</button>
+    <button onclick="copyNickname()">Copy</button>
+    <div id="nicknameResult">Your nickname will appear here</div>
+</section>
         <!-- Sensitivity Trainer Section -->
         <section id="sensitivity" class="feature-section">
             <h2>Sensitivity Trainer</h2>
@@ -937,36 +969,28 @@ body {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     color: #ffffff;
     line-height: 1.6;
-    min-height: 100vh;
 }
 
-/* Header Styles */
+/* Header */
 header {
     background: rgba(0, 0, 0, 0.9);
     padding: 1rem 2rem;
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .logo h1 {
     color: #f0a500;
     font-size: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -975,13 +999,11 @@ nav {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: all 0.3s ease;
-    border: 1px solid transparent;
 }
 
 .nav-links a:hover {
     background: #f0a500;
     color: black;
-    border-color: #f0a500;
 }
 
 /* Main Content */
@@ -997,7 +1019,6 @@ main {
     margin: 2rem 0;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .feature-section h2 {
@@ -1005,311 +1026,6 @@ main {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     text-align: center;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* Sensitivity Tester */
-.sensitivity-tester {
-    border: 2px solid #444;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    background: rgba(42, 42, 42, 0.8);
-}
-
-#weaponSelect {
-    background: #2a2a2a;
-    color: white;
-    padding: 12px 20px;
-    border: 2px solid #f0a500;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    width: 200px;
-}
-
-.target-area {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    background: #1a1a1a;
-    position: relative;
-    margin: 20px auto;
-    border: 3px solid #333;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.target {
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle, #ff4444, #cc0000);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-    cursor: crosshair;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-}
-
-.target:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.sensitivity-info {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    background: rgba(240, 165, 0, 0.1);
-    border-radius: 10px;
-    border-left: 4px solid #f0a500;
-}
-
-.sensitivity-info p {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-}
-
-/* Strategies Section */
-.strategy-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 1.5rem;
-}
-
-.strategy-category {
-    background: rgba(42, 42, 42, 0.9);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-left: 4px solid #f0a500;
-    transition: transform 0.3s ease;
-}
-
-.strategy-category:hover {
-    transform: translateY(-5px);
-}
-
-.strategy-category h3 {
-    color: #f0a500;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    border-bottom: 2px solid #444;
-    padding-bottom: 0.5rem;
-}
-
-.strategy-category ul {
-    list-style: none;
-}
-
-.strategy-category li {
-    margin-bottom: 0.8rem;
-    padding-left: 1rem;
-    border-left: 3px solid #444;
-    transition: border-color 0.3s ease;
-}
-
-.strategy-category li:hover {
-    border-left-color: #f0a500;
-}
-
-.strategy-category strong {
-    color: #f0a500;
-}
-
-/* Graphics Optimizer */
-.graphics-optimizer {
-    text-align: center;
-}
-
-.optimize-btn {
-    background: linear-gradient(45deg, #f0a500, #ff6b00);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin: 1rem 0;
-    transition: all 0.3s ease;
-}
-
-.optimize-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(240, 165, 0, 0.4);
-}
-
-#graphicsSettings {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    background: rgba(42, 42, 42, 0.9);
-    border-radius: 12px;
-    border: 2px solid #444;
-}
-
-.settings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    text-align: left;
-}
-
-.settings-grid p {
-    padding: 0.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    margin: 0.3rem 0;
-}
-
-/* Crate Simulator */
-.crate-simulator {
-    text-align: center;
-}
-
-.crate-btn {
-    background: linear-gradient(45deg, #ff6b00, #ff0080);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin: 1rem 0;
-    transition: all 0.3s ease;
-}
-
-.crate-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
-}
-
-.crate-item {
-    padding: 2rem;
-    margin: 1.5rem 0;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.crate-item:hover {
-    transform: scale(1.02);
-}
-
-.crate-item.common {
-    background: linear-gradient(135deg, rgba(0, 100, 255, 0.3), rgba(0, 150, 255, 0.1));
-    border: 3px solid #0066ff;
-    box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
-}
-
-.crate-item.rare {
-    background: linear-gradient(135deg, rgba(128, 0, 128, 0.3), rgba(200, 0, 200, 0.1));
-    border: 3px solid #800080;
-    box-shadow: 0 0 30px rgba(128, 0, 128, 0.3);
-}
-
-.crate-item.epic {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 165, 0, 0.1));
-    border: 3px solid #ffd700;
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
-}
-
-/* Nickname Generator */
-.nickname-generator {
-    text-align: center;
-}
-
-.nickname-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 1.5rem 0;
-}
-
-.nickname-input {
-    background: #2a2a2a;
-    color: white;
-    border: 2px solid #f0a500;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-size: 1rem;
-    min-width: 200px;
-}
-
-.nickname-select {
-    background: #2a2a2a;
-    color: white;
-    border: 2px solid #f0a500;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.nickname-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 1rem 0;
-}
-
-.nickname-btn {
-    background: linear-gradient(45deg, #f0a500, #ff6b00);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.nickname-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(240, 165, 0, 0.4);
-}
-
-#nicknameResult {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: rgba(240, 165, 0, 0.1);
-    border-radius: 12px;
-    border: 2px solid #f0a500;
-    font-size: 1.5rem;
-    font-weight: bold;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    word-break: break-all;
-}
-
-/* Language Selector */
-.language-selector {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1rem 0;
-    flex-wrap: wrap;
-}
-
-.lang-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #444;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.lang-btn:hover {
-    background: #f0a500;
-    color: black;
-    border-color: #f0a500;
-    transform: translateY(-2px);
 }
 
 /* Music Player */
@@ -1327,69 +1043,69 @@ main {
     padding: 10px 15px;
     border-radius: 25px;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
 }
 
-.music-btn:hover {
-    background: #f0a500;
-    color: black;
-    transform: scale(1.05);
+/* Sensitivity Tester */
+.sensitivity-tester {
+    border: 2px solid #444;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-/* Responsive Design */
+#weaponSelect {
+    background: #2a2a2a;
+    color: white;
+    padding: 10px;
+    border: 1px solid #f0a500;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.target-area {
+    width: 300px;
+    height: 200px;
+    background: #1a1a1a;
+    position: relative;
+    margin: 20px auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+.target {
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(45deg, #f0a500, #ff6b00);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
-    
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
     .nav-links {
+        flex-direction: column;
         gap: 0.5rem;
     }
     
-    .strategy-content {
-        grid-template-columns: 1fr;
-    }
-    
     .target-area {
-        height: 200px;
-    }
-    
-    .nickname-controls {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .music-player {
-        position: relative;
-        top: auto;
-        right: auto;
-        text-align: center;
-        margin: 1rem 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .feature-section {
-        padding: 1rem;
-    }
-    
-    .sensitivity-tester {
-        padding: 1rem;
-    }
-    
-    .target-area {
+        width: 250px;
         height: 150px;
-    }
-    
-    .target {
-        width: 40px;
-        height: 40px;
     }
 }
     │   └── 📄 aim-trainer.css
@@ -2463,9 +2179,26 @@ setupAudioControls() {
     }
 }
     │   ├──js/app.js
-    // =============================================
-// WEAPON SENSITIVITY DATA
-// =============================================
+ // Sistema de Música
+let musicPlaying = false;
+const backgroundMusic = new Audio('audio/background-music.mp3');
+backgroundMusic.loop = true;
+
+function toggleMusic() {
+    if (musicPlaying) {
+        backgroundMusic.pause();
+        musicPlaying = false;
+        event.target.textContent = "🔇 Music";
+    } else {
+        backgroundMusic.play().catch(error => {
+            alert("Click 'Music' again to play!");
+        });
+        musicPlaying = true;
+        event.target.textContent = "🔊 Music";
+    }
+}
+
+// Dados das Armas
 const weaponData = {
     akm: {
         sensitivity: "38-45%",
@@ -2487,177 +2220,103 @@ const weaponData = {
     }
 };
 
-// Initialize weapon sensitivity
-function initializeWeaponSensitivity() {
-    const weaponSelect = document.getElementById('weaponSelect');
-    const weaponStats = document.getElementById('weaponStats');
+// Atualizar informações da arma
+function updateWeaponInfo() {
+    const selectedWeapon = document.getElementById('weaponSelect').value;
+    const stats = weaponData[selectedWeapon];
     
-    function updateWeaponInfo() {
-        const selectedWeapon = weaponSelect.value;
-        const stats = weaponData[selectedWeapon];
-        
-        if (stats) {
-            weaponStats.innerHTML = `
-                <strong>Recommended Sensitivity:</strong> ${stats.sensitivity}<br>
-                <strong>Recoil Control:</strong> ${stats.recoil}<br>
-                <strong>${stats.pattern}</strong><br>
-                <em>${stats.tips}</em>
-            `;
-        }
-    }
-    
-    // Add event listener
-    weaponSelect.addEventListener('change', updateWeaponInfo);
-    
-    // Initialize with first weapon
-    updateWeaponInfo();
-}
-
-// =============================================
-// GRAPHICS OPTIMIZER
-// =============================================
-const deviceProfiles = {
-    lowEnd: {
-        graphics: "Smooth",
-        fps: "Medium",
-        shadows: "Disabled", 
-        antiAliasing: "Disabled",
-        tips: "Focus on performance - best FPS for basic devices"
-    },
-    midRange: {
-        graphics: "Balanced",
-        fps: "High", 
-        shadows: "Disabled",
-        antiAliasing: "Enabled",
-        tips: "Perfect balance between visuals and performance"
-    },
-    highEnd: {
-        graphics: "HDR",
-        fps: "Ultra",
-        shadows: "Enabled",
-        antiAliasing: "Enabled", 
-        tips: "Best visual experience - for flagship devices only"
-    }
-};
-
-function optimizeGraphics() {
-    // Simulate device detection
-    const userAgent = navigator.userAgent;
-    let profile;
-    
-    if (/iPhone X|iPhone 11|iPhone 12|iPhone 13|iPhone 14|iPhone 15|Galaxy S2[0-9]|Pixel [6-9]/i.test(userAgent)) {
-        profile = deviceProfiles.highEnd;
-    } else if (/iPhone [6-9]|Galaxy A|Redmi Note|Moto G/i.test(userAgent)) {
-        profile = deviceProfiles.lowEnd;
-    } else {
-        profile = deviceProfiles.midRange;
-    }
-    
-    displayOptimization(profile);
-}
-
-function displayOptimization(profile) {
-    const graphicsSettings = document.getElementById('graphicsSettings');
-    graphicsSettings.innerHTML = `
-        <h3>⚙️ Optimized Settings for Your Device:</h3>
-        <div class="settings-grid">
-            <p>🎨 <strong>Graphics Quality:</strong> ${profile.graphics}</p>
-            <p>📊 <strong>Frame Rate:</strong> ${profile.fps}</p>
-            <p>🌑 <strong>Shadows:</strong> ${profile.shadows}</p>
-            <p>🔍 <strong>Anti-Aliasing:</strong> ${profile.antiAliasing}</p>
-            <p>💡 <strong>Tip:</strong> ${profile.tips}</p>
-        </div>
+    document.getElementById('weaponStats').innerHTML = `
+        <strong>Recommended Sensitivity:</strong> ${stats.sensitivity}<br>
+        <strong>Recoil Control:</strong> ${stats.recoil}<br>
+        <strong>${stats.pattern}</strong><br>
+        <em>${stats.tips}</em>
     `;
 }
 
-// =============================================
-// CRATE SIMULATOR
-// =============================================
-const crateItems = {
-    common: [
-        { name: "Blue T-Shirt", probability: 0.35, rarity: "common" },
-        { name: "Jeans Pants", probability: 0.30, rarity: "common" },
-        { name: "Level 1 Helmet", probability: 0.25, rarity: "common" },
-        { name: "Level 1 Backpack", probability: 0.20, rarity: "common" }
-    ],
-    rare: [
-        { name: "AKM Gold Skin", probability: 0.15, rarity: "rare" },
-        { name: "Military Outfit", probability: 0.12, rarity: "rare" }, 
-        { name: "Level 3 Backpack", probability: 0.08, rarity: "rare" },
-        { name: "Level 3 Camo Helmet", probability: 0.05, rarity: "rare" }
-    ],
-    epic: [
-        { name: "M416 Legendary Skin", probability: 0.04, rarity: "epic" },
-        { name: "Golden Parachute", probability: 0.02, rarity: "epic" },
-        { name: "Specialist Outfit", probability: 0.015, rarity: "epic" }
-    ]
-};
+// Otimizador de Gráficos
+function optimizeGraphics() {
+    const profiles = {
+        lowEnd: {
+            graphics: "Smooth", fps: "Medium", shadows: "Disabled",
+            tips: "Focus on performance - best FPS"
+        },
+        midRange: {
+            graphics: "Balanced", fps: "High", shadows: "Disabled", 
+            tips: "Perfect balance between visuals and performance"
+        },
+        highEnd: {
+            graphics: "HDR", fps: "Ultra", shadows: "Enabled",
+            tips: "Best visual experience - for flagship devices"
+        }
+    };
+    
+    const userAgent = navigator.userAgent;
+    let profile = profiles.midRange; // padrão
+    
+    if (/iPhone X|iPhone 1[1-5]|Galaxy S2[0-9]|Pixel/i.test(userAgent)) {
+        profile = profiles.highEnd;
+    } else if (/iPhone [6-9]|Galaxy A|Redmi Note|Moto G/i.test(userAgent)) {
+        profile = profiles.lowEnd;
+    }
+    
+    document.getElementById('graphicsSettings').innerHTML = `
+        <h3>⚙️ Optimized Settings:</h3>
+        <p>🎨 Graphics: <strong>${profile.graphics}</strong></p>
+        <p>📊 FPS: <strong>${profile.fps}</strong></p>
+        <p>🌑 Shadows: <strong>${profile.shadows}</strong></p>
+        <p>💡 ${profile.tips}</p>
+    `;
+}
 
+// Simulador de Caixas
 function openCrate() {
+    const items = {
+        common: [
+            { name: "Blue T-Shirt", probability: 0.35, rarity: "common" },
+            { name: "Jeans Pants", probability: 0.30, rarity: "common" }
+        ],
+        rare: [
+            { name: "AKM Gold Skin", probability: 0.15, rarity: "rare" },
+            { name: "Military Outfit", probability: 0.12, rarity: "rare" }
+        ],
+        epic: [
+            { name: "M416 Legendary Skin", probability: 0.04, rarity: "epic" }
+        ]
+    };
+    
     const random = Math.random();
     let item;
     
-    if (random < 0.60) {
-        // 60% common
-        item = getRandomItem(crateItems.common);
-    } else if (random < 0.90) {
-        // 30% rare  
-        item = getRandomItem(crateItems.rare);
-    } else {
-        // 10% epic
-        item = getRandomItem(crateItems.epic);
-    }
+    if (random < 0.60) item = items.common[Math.floor(Math.random() * items.common.length)];
+    else if (random < 0.90) item = items.rare[Math.floor(Math.random() * items.rare.length)];
+    else item = items.epic[Math.floor(Math.random() * items.epic.length)];
     
-    displayCrateResult(item);
-}
-
-function getRandomItem(itemArray) {
-    return itemArray[Math.floor(Math.random() * itemArray.length)];
-}
-
-function displayCrateResult(item) {
-    const resultDiv = document.getElementById('crateResult');
-    const rarityColor = item.rarity === 'common' ? '#0066ff' : 
-                       item.rarity === 'rare' ? '#800080' : '#ffd700';
+    const rarityColor = item.rarity === 'common' ? 'blue' : 
+                       item.rarity === 'rare' ? 'purple' : 'gold';
     
-    resultDiv.innerHTML = `
-        <div class="crate-item ${item.rarity}">
+    document.getElementById('crateResult').innerHTML = `
+        <div style="padding: 1rem; margin: 1rem 0; border-radius: 10px; border: 2px solid ${rarityColor}">
             <h3 style="color: ${rarityColor}">🎁 ${item.name}</h3>
             <p><strong>Rarity:</strong> ${item.rarity.toUpperCase()}</p>
             <p><strong>Probability:</strong> ${(item.probability * 100).toFixed(1)}%</p>
-            <p>${getCrateMessage(item.rarity)}</p>
         </div>
     `;
 }
 
-function getCrateMessage(rarity) {
-    const messages = {
-        common: "Basic item - keep trying!",
-        rare: "Good! Quality item!",
-        epic: "🎉 LEGENDARY! You're lucky!"
-    };
-    return messages[rarity];
-}
-
-// =============================================
-// NICKNAME GENERATOR
-// =============================================
-const nicknameTemplates = {
-    professional: ["Pro", "Elite", "Master", "Ace", "Tactical", "Veteran"],
-    aggressive: ["Killer", "Slayer", "Hunter", "Predator", "Assassin", "Reaper"],
-    tactical: ["Ghost", "Shadow", "Phantom", "Stealth", "Silent", "Ninja"],
-    funny: ["Chicken", "Noob", "Camper", "Bush", "Potato", "Bot"]
-};
-
+// Gerador de Nickname
 function generateNickname() {
+    const styles = {
+        professional: ["Pro", "Elite", "Master", "Ace"],
+        aggressive: ["Killer", "Slayer", "Hunter", "Predator"],
+        tactical: ["Ghost", "Shadow", "Phantom", "Stealth"],
+        funny: ["Chicken", "Noob", "Camper", "Potato"]
+    };
+    
     const style = document.getElementById('nicknameStyle').value;
     const baseName = document.getElementById('baseName').value || "Player";
-    
-    const templates = nicknameTemplates[style];
+    const templates = styles[style];
     const randomTemplate = templates[Math.floor(Math.random() * templates.length)];
-    
-    // Special symbols allowed in PUBG
-    const symbols = ["×", "★", "☆", "㊣", "◎", "●", "◆", "■", "▲", "▼"];
+    const symbols = ["×", "★", "☆", "㊣"];
     const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
     
     const nickname = `${baseName}${randomSymbol}${randomTemplate}`;
@@ -2670,216 +2329,23 @@ function copyNickname() {
         alert("Generate a nickname first!");
         return;
     }
-    
-    navigator.clipboard.writeText(nickname).then(() => {
-        alert("✅ Nickname copied to clipboard!");
-    }).catch(err => {
-        // Fallback for old browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = nickname;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert("✅ Nickname copied!");
-    });
+    navigator.clipboard.writeText(nickname);
+    alert("✅ Nickname copied!");
 }
 
-// =============================================
-// MUSIC PLAYER
-// =============================================
-let musicPlaying = false;
-const backgroundMusic = new Audio('audio/background-music.mp3');
-backgroundMusic.loop = true;
-
-function toggleMusic() {
-    if (musicPlaying) {
-        backgroundMusic.pause();
-        musicPlaying = false;
-        event.target.textContent = "🔇 Music";
-    } else {
-        backgroundMusic.play().catch(error => {
-            console.log("Autoplay prevented: ", error);
-            alert("Click 'Music' again to play!");
-        });
-        musicPlaying = true;
-        event.target.textContent = "🔊 Music";
-    }
-}
-
-// =============================================
-// SMOOTH SCROLLING FOR NAVIGATION
-// =============================================
-function initializeSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-// =============================================
-// INITIALIZE EVERYTHING WHEN PAGE LOADS
-// =============================================
+// Inicialização
 document.addEventListener('DOMContentLoaded', function() {
-    initializeWeaponSensitivity();
-    initializeSmoothScroll();
+    updateWeaponInfo();
+    document.getElementById('weaponSelect').addEventListener('change', updateWeaponInfo);
     
-    // Add music player to the page if it doesn't exist
+    // Adicionar player de música se não existir
     if (!document.querySelector('.music-player')) {
         const musicPlayer = document.createElement('div');
         musicPlayer.className = 'music-player';
         musicPlayer.innerHTML = '<button class="music-btn" onclick="toggleMusic()">🔇 Music</button>';
         document.body.appendChild(musicPlayer);
     }
-    
-    console.log("PUBG Coach Pro initialized successfully! 🎮");
 });
-    │   ├── 📄 storage.js
-    // === SISTEMA DE SALVAMENTO DE CONFIGURAÇÕES ===
-class StorageManager {
-    constructor() {
-        this.storageKey = 'pubgCoachSettings';
-        this.defaultSettings = {
-            savedConfigs: [],
-            favoriteWeapons: [],
-            customSensitivity: {},
-            practiceStats: {
-                totalShots: 0,
-                hits: 0,
-                accuracy: 0,
-                sessions: 0
-            }
-        };
-    }
-
-    // Carregar todas as configurações
-    loadSettings() {
-        const saved = localStorage.getItem(this.storageKey);
-        if (saved) {
-            return JSON.parse(saved);
-        }
-        return this.defaultSettings;
-    }
-
-    // Salvar configurações
-    saveSettings(settings) {
-        localStorage.setItem(this.storageKey, JSON.stringify(settings));
-    }
-
-    // Salvar configuração de dispositivo
-    saveDeviceConfig(deviceName, map, settings) {
-        const currentSettings = this.loadSettings();
-        
-        const newConfig = {
-            id: Date.now(),
-            deviceName: deviceName,
-            map: map,
-            settings: settings,
-            timestamp: new Date().toISOString()
-        };
-
-        // Manter apenas as 10 configurações mais recentes
-        currentSettings.savedConfigs.unshift(newConfig);
-        if (currentSettings.savedConfigs.length > 10) {
-            currentSettings.savedConfigs = currentSettings.savedConfigs.slice(0, 10);
-        }
-
-        this.saveSettings(currentSettings);
-        return newConfig;
-    }
-
-    // Salvar sensibilidade personalizada
-    saveCustomSensitivity(weaponId, scope, values) {
-        const currentSettings = this.loadSettings();
-        
-        if (!currentSettings.customSensitivity[weaponId]) {
-            currentSettings.customSensitivity[weaponId] = {};
-        }
-        
-        currentSettings.customSensitivity[weaponId][scope] = values;
-        this.saveSettings(currentSettings);
-    }
-
-    // Adicionar arma aos favoritos
-    toggleFavoriteWeapon(weaponId) {
-        const currentSettings = this.loadSettings();
-        const index = currentSettings.favoriteWeapons.indexOf(weaponId);
-        
-        if (index > -1) {
-            currentSettings.favoriteWeapons.splice(index, 1);
-        } else {
-            currentSettings.favoriteWeapons.push(weaponId);
-        }
-        
-        this.saveSettings(currentSettings);
-        return currentSettings.favoriteWeapons;
-    }
-
-    // Atualizar estatísticas de treino
-    updatePracticeStats(shots, hits) {
-        const currentSettings = this.loadSettings();
-        
-        currentSettings.practiceStats.totalShots += shots;
-        currentSettings.practiceStats.hits += hits;
-        currentSettings.practiceStats.sessions += 1;
-        currentSettings.practiceStats.accuracy = 
-            (currentSettings.practiceStats.hits / currentSettings.practiceStats.totalShots) * 100;
-        
-        this.saveSettings(currentSettings);
-        return currentSettings.practiceStats;
-    }
-
-    // Exportar configurações
-    exportSettings() {
-        const settings = this.loadSettings();
-        const dataStr = JSON.stringify(settings, null, 2);
-        const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-        
-        const exportFileDefaultName = `pubg_coach_backup_${new Date().toISOString().split('T')[0]}.json`;
-        
-        const linkElement = document.createElement('a');
-        linkElement.setAttribute('href', dataUri);
-        linkElement.setAttribute('download', exportFileDefaultName);
-        linkElement.click();
-    }
-
-    // Importar configurações
-    importSettings(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            
-            reader.onload = (e) => {
-                try {
-                    const importedSettings = JSON.parse(e.target.result);
-                    this.saveSettings(importedSettings);
-                    resolve(importedSettings);
-                } catch (error) {
-                    reject('Invalid file format');
-                }
-            };
-            
-            reader.onerror = () => reject('Error reading file');
-            reader.readAsText(file);
-        });
-    }
-
-    // Limpar todos os dados
-    clearAllData() {
-        localStorage.removeItem(this.storageKey);
-        return this.defaultSettings;
-    }
-}
-
-// Instância global do gerenciador de armazenamento
-const storageManager = new StorageManager();
     │   └── 📄 audio-manager.js
     // === SISTEMA DE GERENCIAMENTO DE ÁUDIO ===
 class AudioManager {
