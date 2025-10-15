@@ -3218,4 +3218,5 @@ const audioManager = new AudioManager();
             └──<img favicon.pgn width="566" height="724" alt= favicon.pgn "src="https://github.com/user-attachments/assets/5ab2a7af-894d-4144-ab91-d7735fe7af7b" /> 
 
     ├── audio/
-        └──<background music.mp3[vlog-beat-background-349853.zip](https://github.com/user-attachments/files/22916953/vlog-beat-background-349853.zip)
+        └──<[Background-music.mp3 https://github.com/user-attachments/files/22937366/Background-music.zip)
+
