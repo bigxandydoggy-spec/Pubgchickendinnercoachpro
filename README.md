@@ -10,6 +10,8 @@ PubgCoachPro/
     <title>PUBG Chicken Dinner Coach Pro</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+<!-- CORRETO: images/ na raiz -->
 </head>
 <body>
     <!-- Header -->
@@ -2140,9 +2142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     │
     ├── 📁 js/                            ⚙️ **PASTA JAVASCRIPT** (criar dentro de assets)
     │   ├── 📄 script.js
-    // No início do script.js, adicione:
-import './audio-manager.js'; // Se usar modules
-// OU adicione no HTML: <script src="assets/js/audio-manager.js"></script>
+//     HTML: <script src="assets/js/audio-manager.js"></script>
     │   ├── 📄 aim-trainer.js
     // No arquivo assets/js/aim-trainer.js, adicione:
 
@@ -2151,7 +2151,8 @@ setupAudioControls() {
     const sfxVolumeSlider = document.getElementById('sfxVolume');
     const muteToggle = document.getElementById('muteToggle');
     const testSoundsBtn = document.getElementById('testSoundsBtn');
-
+    const backgroundMusic = new Audio('audio/background-music.mp3');
+<!-- CORRETO: audio/ na raiz -->
     if (musicVolumeSlider) {
         musicVolumeSlider.addEventListener('input', (e) => {
             audioManager.setMusicVolume(parseInt(e.target.value) / 100);
@@ -3229,8 +3230,6 @@ class AudioManager {
         return this.isMuted;
     }
 }
-    ├── audio/
-        └── background-music.mp3
 // Instância global do gerenciador de áudio
 const audioManager = new AudioManager();
     │
@@ -3269,9 +3268,11 @@ const audioManager = new AudioManager();
   ],
   "categories": ["games", "entertainment", "education"]
 }
-        ├── images/
-            └──favicon.pgn
         ├── 📄 apple-touch-icon.png
         ├── 📄 favicon-32x32.png
         ├── 📄 favicon-16x16.png
         └── 📄 icon-512x512.png
+    ├── images/
+            └──favicon.pgn
+    ├── audio/
+        └── background-music.mp3
