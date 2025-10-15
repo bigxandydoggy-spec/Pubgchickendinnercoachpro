@@ -29,142 +29,28 @@ PubgCoachPro/
             </div>
         </nav>
     </header>
-
-    <main>
-        <!-- Graphics Optimizer Section -->
-<section id="graphics" class="feature-section">
-    <h2>Graphics Optimizer</h2>
-    <button onclick="optimizeGraphics()">Optimize My Device</button>
-    <div id="graphicsSettings">
-        <p>Click the button above to get optimized graphics settings.</p>
-    </div>
-</section>
-
-<!-- Crate Simulator Section -->
-<section id="crates" class="feature-section">
-    <h2>Crate Simulator</h2>
-    <button onclick="openCrate()">Open Crate (10 UC)</button>
-    <div id="crateResult">
-        <p>Open a crate to see what you get!</p>
-    </div>
-</section>
-
-<!-- Nickname Generator Section -->
-<section id="nickname" class="feature-section">
-    <h2>Nickname Generator</h2>
-    <input type="text" id="baseName" placeholder="Your name" value="Player">
-    <select id="nicknameStyle">
-        <option value="professional">Professional</option>
-        <option value="aggressive">Aggressive</option>
-        <option value="tactical">Tactical</option>
-        <option value="funny">Funny</option>
-    </select>
-    <button onclick="generateNickname()">Generate</button>
-    <button onclick="copyNickname()">Copy</button>
-    <div id="nicknameResult">Your nickname will appear here</div>
-</section>
-        <!-- Sensitivity Trainer Section -->
-        <section id="sensitivity" class="feature-section">
-            <h2>Sensitivity Trainer</h2>
-            <div class="sensitivity-tester">
-                <select id="weaponSelect">
-                    <option value="akm">AKM</option>
-                    <option value="m416">M416</option>
-                    <option value="scar-l">SCAR-L</option>
-                </select>
-                <div class="target-area" id="targetArea">
-                    <div class="target" id="target"></div>
-                </div>
-                <div class="sensitivity-info">
-                    <p id="weaponStats">Select a weapon to see recommended settings.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Strategies Section -->
-        <section id="strategies" class="feature-section">
-            <h2>Battle Strategies</h2>
-            <div class="strategy-content">
-                <div class="strategy-category">
-                    <h3>Landing Phase</h3>
-                    <ul>
-                        <li><strong>Hot Drop:</strong> School, Pochinki - high risk, high reward.</li>
-                        <li><strong>Safe Drop:</strong> Georgopol containers, Farm - medium loot.</li>
-                        <li><strong>Stealth Drop:</strong> Stalber, Primorsk - avoid early combat.</li>
-                    </ul>
-                </div>
-                <div class="strategy-category">
-                    <h3>Mid-Game Rotation</h3>
-                    <ul>
-                        <li><strong>Edge Play:</strong> Stay at the safe zone edge to clear enemies behind.</li>
-                        <li><strong>Center Hold:</strong> Secure a central position with 360-degree vision.</li>
-                        <li><strong>Early Rotate:</strong> Move to opposite corner of next zone early.</li>
-                    </ul>
-                </div>
-                <div class="strategy-category">
-                    <h3>Combat Tactics</h3>
-                    <ul>
-                        <li><strong>Peek and Shoot:</strong> Use cover, shoot, and return to cover.</li>
-                        <li><strong>Flanking:</strong> Attack from sides while team distracts.</li>
-                        <li><strong>Grenade Tactics:</strong> Use smoke for revives, flash for rushing.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Graphics Optimizer Section -->
-        <section id="graphics" class="feature-section">
-            <h2>Graphics Optimizer</h2>
-            <div class="graphics-optimizer">
-                <button class="optimize-btn" onclick="optimizeGraphics()">
-                    Optimize My Device
-                </button>
-                <div id="graphicsSettings">
-                    <p>Click the button above to get optimized graphics settings for your device.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Crate Simulator Section -->
-        <section id="crates" class="feature-section">
-            <h2>Crate Simulator</h2>
-            <div class="crate-simulator">
-                <button class="crate-btn" onclick="openCrate()">
-                    Open Crate (10 UC)
-                </button>
-                <div id="crateResult">
-                    <p>Open a crate to see what you get!</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nickname Generator Section -->
-        <section id="nickname" class="feature-section">
-            <h2>Nickname Generator</h2>
-            <div class="nickname-generator">
-                <div class="nickname-controls">
-                    <input type="text" id="baseName" class="nickname-input" placeholder="Your name" value="Player">
-                    <select id="nicknameStyle" class="nickname-select">
-                        <option value="professional">Professional</option>
-                        <option value="aggressive">Aggressive</option>
-                        <option value="tactical">Tactical</option>
-                        <option value="funny">Funny</option>
-                    </select>
-                </div>
-                <div class="nickname-buttons">
-                    <button class="nickname-btn" onclick="generateNickname()">Generate</button>
-                    <button class="nickname-btn" onclick="copyNickname()">Copy</button>
-                </div>
-                <div id="nicknameResult">
-                    Your nickname will appear here
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="js/app.js"></script>
-</body>
-</html>
+<header>
+    <nav>
+        <div class="logo">
+            <h1>PUBG Chicken Dinner Coach Pro</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#sensitivity">Sensitivity</a>
+            <a href="#strategies">Strategies</a>
+            <a href="#graphics">Graphics</a>
+            <a href="#crates">Crates</a>
+            <a href="#nickname">Nickname</a>
+        </div>
+        <!-- 🔽 ADICIONE ESTE SELETOR DE IDIOMAS 🔽 -->
+        <div class="language-selector">
+            <button onclick="changeLanguage('en')">🇺🇸 English</button>
+            <button onclick="changeLanguage('pt')">🇧🇷 Português</button>
+            <button onclick="changeLanguage('ko')">🇰🇷 한국어</button>
+            <button onclick="changeLanguage('ja')">🇯🇵 日本語</button>
+            <button onclick="changeLanguage('zh')">🇨🇳 中文</button>
+        </div>
+    </nav>
+</header>
 │
 ├── 📁 locales/                           
 🌍 **PASTA IDIOMAS** 
@@ -395,6 +281,28 @@ PubgCoachPro/
   ]
 }
 │   └── 📄 zh.json
+const translations = {
+    // ... seus outros idiomas ...
+    
+    zh: { // ✅ CHINÊS ADICIONADO AQUI
+        welcome: "PUBG 吃鸡教练专业版",
+        sensitivity: "灵敏度训练器", 
+        strategies: "战斗策略",
+        graphics: "图形优化器",
+        crates: "宝箱模拟器",
+        nickname: "昵称生成器",
+        welcomeHome: "欢迎来到 PUBG 教练专业版!",
+        welcomeText: "最先进的 PUBG Mobile 教练平台。优化您的设备，掌握武器并提高技能。",
+        feature1: "设备优化器",
+        feature1Desc: "为您的设备和每个地图获取完美的图形设置",
+        feature2: "武器大师", 
+        feature2Desc: "每种武器和瞄准镜的最佳灵敏度设置",
+        feature3: "瞄准训练器",
+        feature3Desc: "使用真实武器模式进行交互式后坐力控制练习",
+        feature4: "策略指南",
+        feature4Desc: "每个地图的专业轮换路线和隐藏点"
+    }
+};
 │
 ├── 📁 data/                              
 🗃️ **PASTA DATABASES**
@@ -961,6 +869,40 @@ PubgCoachPro/
     ├── 📁 css/                           
     │   ├── 📄 style.css
  * {
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.language-selector button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.language-selector button:hover {
+    background: #f0a500;
+    color: black;
+    border-color: #f0a500;
+}
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .language-selector {
+        order: -1; /* Coloca os idiomas em cima no mobile */
+        margin-bottom: 1rem;
+    }
+}
     margin: 0;
     padding: 0;
     box-sizing: border-box;
