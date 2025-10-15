@@ -7,361 +7,128 @@ PubgCoachPro/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PubgCoachluciodevs - Professional PUBG Mobile Coach</title>
-    <meta name="description" content="Advanced PUBG Mobile coaching assistant with device optimization, weapon sensitivity, and interactive aim trainer. Powered by DeepSeek">
-    
-    <!-- Ícones Personalizados -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-    <link rel="manifest" href="assets/icons/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#ff6b35">
-    <meta name="theme-color" content="#ff6b35">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/aim-trainer.css">
+    <title>PUBG Chicken Dinner Coach Pro</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <body>
-    <!-- Audio Elements -->
-    <audio id="backgroundMusic" loop>
-        <source src="assets/audio/opening-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <!-- Header -->
-    <header class="app-header">
-        <div class="header-content">
-            <h1 class="app-title" data-i18n="appTitle">PubgCoachluciodevs</h1>
-            <p class="app-subtitle" data-i18n="welcomeSubtitle">Professional PUBG Mobile Coach - Powered by DeepSeek</p>
-            
-            <div class="header-controls">
-                <select id="languageSelector" class="language-selector">
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
-                    <option value="ja">日本語</option>
-                    <option value="ko">한국어</option>
-                    <option value="zh">中文</option>
-                </select>
-                <button id="musicToggle" class="audio-control-btn">🎵</button>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>PUBG Chicken Dinner Coach Pro</h1>
             </div>
-        </div>
+            <div class="nav-links">
+                <a href="#sensitivity">Sensitivity</a>
+                <a href="#strategies">Strategies</a>
+                <a href="#graphics">Graphics</a>
+                <a href="#crates">Crates</a>
+                <a href="#nickname">Nickname</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <button class="nav-button active" data-section="home" data-i18n="home">Home</button>
-        <button class="nav-button" data-section="device-optimizer" data-i18n="deviceOptimizer">Device Optimizer</button>
-        <button class="nav-button" data-section="weapon-master" data-i18n="weaponMaster">Weapon Master</button>
-        <button class="nav-button" data-section="aim-trainer" data-i18n="aimTrainer">Aim Trainer</button>
-        <button class="nav-button" data-section="strategies" data-i18n="strategies">Strategies</button>
-        <button class="nav-button" data-section="saved-configs" data-i18n="savedConfigs">My Configs</button>
-    </nav>
-
-    <!-- Main Content -->
     <main>
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="hero-section">
-                <h2 data-i18n="welcomeHome">Welcome to PubgCoachluciodevs!</h2>
-                <p data-i18n="welcomeText">The most advanced PUBG Mobile coaching platform. Optimize your device, master weapons, and improve your skills.</p>
-                
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3 data-i18n="feature1">Device Optimizer</h3>
-                        <p data-i18n="feature1Desc">Get perfect graphics settings for your device and each map</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 data-i18n="feature2">Weapon Master</h3>
-                        <p data-i18n="feature2Desc">Best sensitivity settings for every weapon and scope</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔫</div>
-                        <h3 data-i18n="feature3">Aim Trainer</h3>
-                        <p data-i18n="feature3Desc">Interactive recoil control practice with real weapon patterns</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🗺️</div>
-                        <h3 data-i18n="feature4">Strategy Guide</h3>
-                        <p data-i18n="feature4Desc">Pro rotation routes and hiding spots for each map</p>
-                    </div>
+        <!-- Sensitivity Trainer Section -->
+        <section id="sensitivity" class="feature-section">
+            <h2>Sensitivity Trainer</h2>
+            <div class="sensitivity-tester">
+                <select id="weaponSelect">
+                    <option value="akm">AKM</option>
+                    <option value="m416">M416</option>
+                    <option value="scar-l">SCAR-L</option>
+                </select>
+                <div class="target-area" id="targetArea">
+                    <div class="target" id="target"></div>
                 </div>
-
-                <div class="audio-notice">
-                    <p>🔊 <span data-i18n="audioNotice">Click anywhere to enable background music</span></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Device Optimizer Section -->
-        <section id="device-optimizer" class="section">
-            <div class="section-header">
-                <h2 data-i18n="deviceOptimizer">Device Graphics Optimizer</h2>
-                <p data-i18n="deviceOptimizerDesc">Get the perfect graphics settings for your device and each PUBG map</p>
-            </div>
-
-            <div class="optimizer-container">
-                <div class="device-search">
-                    <input type="text" id="deviceSearch" placeholder="Search your device..." data-i18n-placeholder="searchDevicePlaceholder">
-                    <button id="searchDeviceBtn" data-i18n="search">Search</button>
-                </div>
-
-                <div id="searchResults" class="search-results"></div>
-
-                <div id="deviceConfig" class="device-config hidden">
-                    <div class="device-header">
-                        <h3 id="selectedDeviceName">Device Name</h3>
-                        <button id="saveDeviceConfig" class="btn-secondary" data-i18n="saveConfig">Save Configuration</button>
-                    </div>
-
-                    <div class="map-selector">
-                        <h4 data-i18n="selectMap">Select Map:</h4>
-                        <div class="map-buttons">
-                            <button class="map-btn active" data-map="erangel">Erangel</button>
-                            <button class="map-btn" data-map="miramar">Miramar</button>
-                            <button class="map-btn" data-map="vikendi">Vikendi</button>
-                            <button class="map-btn" data-map="livik">Livik</button>
-                            <button class="map-btn" data-map="nusa">Nusa</button>
-                        </div>
-                    </div>
-
-                    <div id="graphicsSettings" class="graphics-settings">
-                        <!-- Graphics settings will be loaded here -->
-                    </div>
-
-                    <div class="optimization-tips">
-                        <h4 data-i18n="optimizationTips">Optimization Tips:</h4>
-                        <p id="optimizationTipText">Loading tips...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Weapon Master Section -->
-        <section id="weapon-master" class="section">
-            <div class="section-header">
-                <h2 data-i18n="weaponMaster">Weapon Sensitivity Master</h2>
-                <p data-i18n="weaponMasterDesc">Perfect sensitivity settings for every weapon and scope combination</p>
-            </div>
-
-            <div class="weapon-container">
-                <div class="weapon-selector">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-type="all" data-i18n="allWeapons">All Weapons</button>
-                        <button class="filter-btn" data-type="assault_rifle" data-i18n="assaultRifles">Assault Rifles</button>
-                        <button class="filter-btn" data-type="smg" data-i18n="smgs">SMGs</button>
-                        <button class="filter-btn" data-type="sniper" data-i18n="snipers">Snipers</button>
-                    </div>
-
-                    <div class="weapon-list" id="weaponList">
-                        <!-- Weapons will be loaded here -->
-                    </div>
-                </div>
-
-                <div class="weapon-details" id="weaponDetails">
-                    <div class="select-weapon-prompt">
-                        <p data-i18n="selectWeaponPrompt">Select a weapon to view detailed sensitivity settings</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Aim Trainer Section -->
-        <section id="aim-trainer" class="section">
-            <div class="section-header">
-                <h2 data-i18n="aimTrainer">Interactive Aim Trainer</h2>
-                <p data-i18n="aimTrainerDesc">Practice recoil control with real weapon patterns and sensitivity</p>
-            </div>
-
-            <div class="aim-trainer-container">
-                <div class="aim-controls">
-                    <div class="control-group">
-                        <label for="weaponSelect" data-i18n="selectWeapon">Select Weapon:</label>
-                        <select id="weaponSelect">
-                            <option value="m416">M416</option>
-                            <option value="akm">AKM</option>
-                            <option value="ump45">UMP45</option>
-                            <option value="scar_l">SCAR-L</option>
-                            <option value="m762">Beryl M762</option>
-                            <option value="aug">AUG A3</option>
-                        </select>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="sensitivitySlider" data-i18n="sensitivity">Sensitivity:</label>
-                        <input type="range" id="sensitivitySlider" min="1" max="100" value="50">
-                        <div class="sensitivity-display">
-                            <span data-i18n="low">Low</span>
-                            <span id="sensitivityValue">50</span>
-                            <span data-i18n="high">High</span>
-                        </div>
-                    </div>
-
-                    <div class="audio-controls">
-                        <h4 data-i18n="audioControls">Audio Controls</h4>
-                        <div class="control-group">
-                            <label for="musicVolume" data-i18n="musicVolume">Music Volume:</label>
-                            <input type="range" id="musicVolume" min="0" max="100" value="30">
-                        </div>
-                        <div class="control-group">
-                            <label for="sfxVolume" data-i18n="sfxVolume">SFX Volume:</label>
-                            <input type="range" id="sfxVolume" min="0" max="100" value="50">
-                        </div>
-                        <button id="muteToggle" class="btn-secondary">🔊</button>
-                    </div>
-
-                    <div class="weapon-stats">
-                        <h4 data-i18n="weaponStats">Weapon Stats</h4>
-                        <div class="stat-row">
-                            <span class="stat-label" data-i18n="weapon">Weapon:</span>
-                            <span class="stat-value" id="weaponName">M416</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label" data-i18n="damage">Damage:</span>
-                            <span class="stat-value" id="weaponDamage">41</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label" data-i18n="fireRate">Fire Rate:</span>
-                            <span class="stat-value" id="weaponFireRate">0.085ms</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label" data-i18n="recoil">Recoil:</span>
-                            <span class="stat-value" id="weaponRecoil">Medium</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label" data-i18n="difficulty">Difficulty:</span>
-                            <span class="stat-value" id="weaponDifficulty">Medium</span>
-                        </div>
-                    </div>
-
-                    <div class="spray-tip">
-                        <h4 data-i18n="sprayControlTip">Spray Control Tip:</h4>
-                        <p id="sprayTip">Pull down slightly during the first 10 shots</p>
-                    </div>
-                </div>
-
-                <div class="aim-canvas-container">
-                    <canvas id="aimCanvas" width="800" height="600"></canvas>
-                    <div class="aim-stats">
-                        <div data-i18n="accuracy">Accuracy:</div>
-                        <div id="accuracyValue">0%</div>
-                        <button id="resetStats" class="btn-small" data-i18n="resetStats">Reset</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="practice-modes">
-                <div class="practice-mode active" data-mode="precision">
-                    <div class="mode-icon">🎯</div>
-                    <div class="mode-name" data-i18n="precisionMode">Precision Mode</div>
-                    <div class="mode-desc" data-i18n="precisionDesc">Small targets, focus on accuracy</div>
-                </div>
-                <div class="practice-mode" data-mode="speed">
-                    <div class="mode-icon">⚡</div>
-                    <div class="mode-name" data-i18n="speedMode">Speed Mode</div>
-                    <div class="mode-desc" data-i18n="speedDesc">Fast targets, focus on reaction time</div>
-                </div>
-                <div class="practice-mode" data-mode="recoil">
-                    <div class="mode-icon">🔫</div>
-                    <div class="mode-name" data-i18n="recoilMode">Recoil Control</div>
-                    <div class="mode-desc" data-i18n="recoilDesc">Practice weapon recoil patterns</div>
+                <div class="sensitivity-info">
+                    <p id="weaponStats">Select a weapon to see recommended settings.</p>
                 </div>
             </div>
         </section>
 
         <!-- Strategies Section -->
-        <section id="strategies" class="section">
-            <div class="section-header">
-                <h2 data-i18n="strategies">Advanced Strategies</h2>
-                <p data-i18n="strategiesDesc">Pro rotation routes and hiding spots for each map</p>
-            </div>
-
-            <div class="strategies-container">
-                <div class="map-selector-tabs">
-                    <button class="map-tab active" data-map="erangel">Erangel</button>
-                    <button class="map-tab" data-map="miramar">Miramar</button>
-                    <button class="map-tab" data-map="vikendi">Vikendi</button>
-                    <button class="map-tab" data-map="livik">Livik</button>
+        <section id="strategies" class="feature-section">
+            <h2>Battle Strategies</h2>
+            <div class="strategy-content">
+                <div class="strategy-category">
+                    <h3>Landing Phase</h3>
+                    <ul>
+                        <li><strong>Hot Drop:</strong> School, Pochinki - high risk, high reward.</li>
+                        <li><strong>Safe Drop:</strong> Georgopol containers, Farm - medium loot.</li>
+                        <li><strong>Stealth Drop:</strong> Stalber, Primorsk - avoid early combat.</li>
+                    </ul>
                 </div>
-
-                <div class="strategies-content">
-                    <div class="rotation-routes">
-                        <h3 data-i18n="rotationRoutes">Rotation Routes</h3>
-                        <div id="rotationRoutesList">
-                            <!-- Routes will be loaded here -->
-                        </div>
-                    </div>
-
-                    <div class="hiding-spots">
-                        <h3 data-i18n="hidingSpots">Best Hiding Spots</h3>
-                        <div id="hidingSpotsList">
-                            <!-- Hiding spots will be loaded here -->
-                        </div>
-                    </div>
+                <div class="strategy-category">
+                    <h3>Mid-Game Rotation</h3>
+                    <ul>
+                        <li><strong>Edge Play:</strong> Stay at the safe zone edge to clear enemies behind.</li>
+                        <li><strong>Center Hold:</strong> Secure a central position with 360-degree vision.</li>
+                        <li><strong>Early Rotate:</strong> Move to opposite corner of next zone early.</li>
+                    </ul>
+                </div>
+                <div class="strategy-category">
+                    <h3>Combat Tactics</h3>
+                    <ul>
+                        <li><strong>Peek and Shoot:</strong> Use cover, shoot, and return to cover.</li>
+                        <li><strong>Flanking:</strong> Attack from sides while team distracts.</li>
+                        <li><strong>Grenade Tactics:</strong> Use smoke for revives, flash for rushing.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Saved Configs Section -->
-        <section id="saved-configs" class="section">
-            <div class="section-header">
-                <h2 data-i18n="savedConfigs">My Saved Configurations</h2>
-                <p data-i18n="savedConfigsDesc">Your saved device and sensitivity configurations</p>
+        <!-- Graphics Optimizer Section -->
+        <section id="graphics" class="feature-section">
+            <h2>Graphics Optimizer</h2>
+            <div class="graphics-optimizer">
+                <button class="optimize-btn" onclick="optimizeGraphics()">
+                    Optimize My Device
+                </button>
+                <div id="graphicsSettings">
+                    <p>Click the button above to get optimized graphics settings for your device.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="saved-configs-container">
-                <div class="config-actions">
-                    <button id="exportConfigs" class="btn-secondary" data-i18n="exportConfigs">Export All Configs</button>
-                    <button id="importConfigs" class="btn-secondary" data-i18n="importConfigs">Import Configs</button>
-                    <button id="clearAllConfigs" class="btn-danger" data-i18n="clearAll">Clear All</button>
+        <!-- Crate Simulator Section -->
+        <section id="crates" class="feature-section">
+            <h2>Crate Simulator</h2>
+            <div class="crate-simulator">
+                <button class="crate-btn" onclick="openCrate()">
+                    Open Crate (10 UC)
+                </button>
+                <div id="crateResult">
+                    <p>Open a crate to see what you get!</p>
                 </div>
+            </div>
+        </section>
 
-                <div class="configs-list" id="configsList">
-                    <!-- Saved configs will be loaded here -->
+        <!-- Nickname Generator Section -->
+        <section id="nickname" class="feature-section">
+            <h2>Nickname Generator</h2>
+            <div class="nickname-generator">
+                <div class="nickname-controls">
+                    <input type="text" id="baseName" class="nickname-input" placeholder="Your name" value="Player">
+                    <select id="nicknameStyle" class="nickname-select">
+                        <option value="professional">Professional</option>
+                        <option value="aggressive">Aggressive</option>
+                        <option value="tactical">Tactical</option>
+                        <option value="funny">Funny</option>
+                    </select>
                 </div>
-
-                <div class="practice-stats">
-                    <h3 data-i18n="practiceStats">Practice Statistics</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number" id="totalShots">0</div>
-                            <div class="stat-label" data-i18n="totalShots">Total Shots</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="totalHits">0</div>
-                            <div class="stat-label" data-i18n="totalHits">Total Hits</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="accuracyPercent">0%</div>
-                            <div class="stat-label" data-i18n="accuracy">Accuracy</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="sessionsCount">0</div>
-                            <div class="stat-label" data-i18n="sessions">Sessions</div>
-                        </div>
-                    </div>
+                <div class="nickname-buttons">
+                    <button class="nickname-btn" onclick="generateNickname()">Generate</button>
+                    <button class="nickname-btn" onclick="copyNickname()">Copy</button>
+                </div>
+                <div id="nicknameResult">
+                    Your nickname will appear here
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="app-footer">
-        <div class="footer-content">
-            <p data-i18n="appTitle">PubgCoachluciodevs</p>
-            <p data-i18n="poweredBy">Powered by DeepSeek</p>
-            <p class="footer-note" data-i18n="footerNote">Professional PUBG Mobile Coaching Platform - Global Version</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="assets/js/audio-manager.js"></script>
-    <script src="assets/js/storage.js"></script>
-    <script src="assets/js/aim-trainer.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
 │
@@ -1158,707 +925,471 @@ PubgCoachPro/
     │   └── 📄 aug-shot.mp3
     │
     ├── 📁 css/                           
-    🎨 **PASTA ESTILOS** (criar dentro de assets)
     │   ├── 📄 style.css
-    /* ===== VARIÁVEIS E RESET ===== */
-:root {
-    --color-primary: #ff6b35;
-    --color-primary-dark: #e55a2b;
-    --color-dark: #1a1a1a;
-    --color-darker: #141414;
-    --color-gray: #2d2d2d;
-    --color-light: #ffffff;
-    --color-gold: #ffd700;
-    --color-success: #4CAF50;
-    --color-error: #f44336;
-    --color-warning: #ff9800;
-    --font-main: 'Arial', 'Segoe UI', sans-serif;
-}
-
-* {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: var(--font-main);
-    background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 100%);
-    color: var(--color-light);
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #ffffff;
     line-height: 1.6;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* ===== HEADER ===== */
-.app-header {
-    background: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 2rem 1rem;
-    text-align: center;
-    border-bottom: 3px solid var(--color-primary);
-    position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.app-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, var(--color-primary), var(--color-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
-}
-
-.app-subtitle {
-    color: #cccccc;
-    font-size: 1.1rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-}
-
-.language-selector {
-    background: var(--color-gray);
-    color: white;
-    border: 1px solid #444;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.language-selector:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
-}
-
-/* ===== NAVEGAÇÃO ===== */
-.nav-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: rgba(255, 107, 53, 0.1);
-    backdrop-filter: blur(5px);
-    flex-wrap: wrap;
-    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
-}
-
-.nav-button {
-    background: var(--color-gray);
-    color: white;
-    border: none;
+/* Header Styles */
+header {
+    background: rgba(0, 0, 0, 0.9);
     padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    border: 2px solid transparent;
-    min-width: 140px;
-    font-size: 0.95rem;
-}
-
-.nav-button:hover {
-    background: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
-}
-
-.nav-button.active {
-    background: var(--color-primary);
-    border-color: var(--color-gold);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
-    transform: translateY(-1px);
-}
-
-/* ===== SEÇÕES ===== */
-.section {
-    display: none;
-    padding: 3rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    animation: fadeIn 0.5s ease;
-    min-height: 70vh;
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-.section.active {
-    display: block;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
-}
-
-.section-header p {
-    font-size: 1.2rem;
-    color: #cccccc;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* ===== HOME SECTION ===== */
-.hero-section {
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.hero-section h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-primary);
-}
-
-.hero-section p {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-    color: #cccccc;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.feature-card {
-    background: rgba(255, 107, 53, 0.1);
-    padding: 2.5rem 2rem;
-    border-radius: 15px;
-    border-left: 4px solid var(--color-primary);
-    transition: all 0.3s ease;
-    text-align: center;
     backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
-}
-
-.feature-card:nth-child(2) {
-    border-left-color: var(--color-gold);
-}
-
-.feature-card:nth-child(3) {
-    border-left-color: #4CAF50;
-}
-
-.feature-card:nth-child(4) {
-    border-left-color: #2196F3;
-}
-
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.feature-card p {
-    color: #cccccc;
-    font-size: 1rem;
-    text-align: center;
-}
-
-/* ===== DEVICE OPTIMIZER ===== */
-.optimizer-container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.device-search {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.device-search input {
-    flex: 1;
-    padding: 1rem 1.5rem;
-    background: #1a1a1a;
-    color: white;
-    border: 2px solid #444;
-    border-radius: 8px;
-    font-size: 1.1rem;
-}
-
-.device-search button {
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.search-results {
-    background: var(--color-gray);
-    border-radius: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 2rem;
-}
-
-.search-result-item {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #444;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.search-result-item:hover {
-    background: rgba(255, 107, 53, 0.1);
-}
-
-.search-result-item:last-child {
-    border-bottom: none;
-}
-
-.device-config {
-    background: var(--color-gray);
-    padding: 2rem;
-    border-radius: 15px;
-    border-left: 4px solid var(--color-primary);
-}
-
-.device-header {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
-.device-header h3 {
-    color: var(--color-primary);
+.logo h1 {
+    color: #f0a500;
     font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.map-selector {
-    margin-bottom: 2rem;
-}
-
-.map-buttons {
+.nav-links {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
-
-.map-btn {
-    background: #1a1a1a;
-    color: white;
-    border: 2px solid #444;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.map-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-.graphics-settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.setting-item {
-    background: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.setting-label {
-    color: #cccccc;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.setting-value {
-    color: var(--color-gold);
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.optimization-tips {
-    background: rgba(255, 107, 53, 0.1);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--color-gold);
-}
-
-.optimization-tips h4 {
-    color: var(--color-gold);
-    margin-bottom: 1rem;
-}
-
-/* ===== WEAPON MASTER ===== */
-.weapon-container {
-    display: grid;
-    grid-template-columns: 300px 1fr;
     gap: 2rem;
-}
-
-.filter-buttons {
-    display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
 }
 
-.filter-btn {
-    background: #1a1a1a;
+.nav-links a {
     color: white;
-    border: 1px solid #444;
+    text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
+    border-radius: 5px;
     transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
-.filter-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+.nav-links a:hover {
+    background: #f0a500;
+    color: black;
+    border-color: #f0a500;
 }
 
-.weapon-list {
-    background: var(--color-gray);
-    border-radius: 10px;
-    max-height: 600px;
-    overflow-y: auto;
-}
-
-.weapon-item {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #444;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.weapon-item:hover {
-    background: rgba(255, 107, 53, 0.1);
-}
-
-.weapon-item.active {
-    background: rgba(255, 107, 53, 0.2);
-    border-left: 4px solid var(--color-primary);
-}
-
-.weapon-item:last-child {
-    border-bottom: none;
-}
-
-.weapon-details {
-    background: var(--color-gray);
+/* Main Content */
+main {
     padding: 2rem;
-    border-radius: 15px;
-    min-height: 400px;
-}
-
-.select-weapon-prompt {
-    text-align: center;
-    color: #cccccc;
-    font-style: italic;
-    margin-top: 8rem;
-}
-
-/* ===== STRATEGIES SECTION ===== */
-.strategies-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.map-selector-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.map-tab {
-    background: #1a1a1a;
-    color: white;
-    border: 2px solid #444;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-.map-tab.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-.strategies-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.rotation-routes, .hiding-spots {
-    background: var(--color-gray);
+.feature-section {
+    background: rgba(255, 255, 255, 0.05);
     padding: 2rem;
+    margin: 2rem 0;
     border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.rotation-routes h3, .hiding-spots h3 {
-    color: var(--color-primary);
+.feature-section h2 {
+    color: #f0a500;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* ===== SAVED CONFIGS ===== */
-.saved-configs-container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.config-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.btn-secondary {
-    background: #1a1a1a;
-    color: white;
+/* Sensitivity Tester */
+.sensitivity-tester {
     border: 2px solid #444;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-    border-color: var(--color-primary);
-}
-
-.btn-danger {
-    background: var(--color-error);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.configs-list {
-    display: grid;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.config-item {
-    background: var(--color-gray);
-    padding: 1.5rem;
-    border-radius: 10px;
-    border-left: 4px solid var(--color-primary);
-}
-
-.practice-stats {
-    background: var(--color-gray);
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(42, 42, 42, 0.8);
 }
 
-.stats-grid {
+#weaponSelect {
+    background: #2a2a2a;
+    color: white;
+    padding: 12px 20px;
+    border: 2px solid #f0a500;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    width: 200px;
+}
+
+.target-area {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    background: #1a1a1a;
+    position: relative;
+    margin: 20px auto;
+    border: 3px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.target {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ff4444, #cc0000);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    cursor: crosshair;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.target:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.sensitivity-info {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(240, 165, 0, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #f0a500;
+}
+
+.sensitivity-info p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Strategies Section */
+.strategy-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
     margin-top: 1.5rem;
 }
 
-.stat-card {
-    background: #1a1a1a;
+.strategy-category {
+    background: rgba(42, 42, 42, 0.9);
     padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #f0a500;
+    transition: transform 0.3s ease;
+}
+
+.strategy-category:hover {
+    transform: translateY(-5px);
+}
+
+.strategy-category h3 {
+    color: #f0a500;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.5rem;
+}
+
+.strategy-category ul {
+    list-style: none;
+}
+
+.strategy-category li {
+    margin-bottom: 0.8rem;
+    padding-left: 1rem;
+    border-left: 3px solid #444;
+    transition: border-color 0.3s ease;
+}
+
+.strategy-category li:hover {
+    border-left-color: #f0a500;
+}
+
+.strategy-category strong {
+    color: #f0a500;
+}
+
+/* Graphics Optimizer */
+.graphics-optimizer {
+    text-align: center;
+}
+
+.optimize-btn {
+    background: linear-gradient(45deg, #f0a500, #ff6b00);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.optimize-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(240, 165, 0, 0.4);
+}
+
+#graphicsSettings {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(42, 42, 42, 0.9);
+    border-radius: 12px;
+    border: 2px solid #444;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    text-align: left;
+}
+
+.settings-grid p {
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
+    margin: 0.3rem 0;
+}
+
+/* Crate Simulator */
+.crate-simulator {
     text-align: center;
 }
 
-.stat-number {
-    font-size: 2rem;
+.crate-btn {
+    background: linear-gradient(45deg, #ff6b00, #ff0080);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.crate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+}
+
+.crate-item {
+    padding: 2rem;
+    margin: 1.5rem 0;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.crate-item:hover {
+    transform: scale(1.02);
+}
+
+.crate-item.common {
+    background: linear-gradient(135deg, rgba(0, 100, 255, 0.3), rgba(0, 150, 255, 0.1));
+    border: 3px solid #0066ff;
+    box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+}
+
+.crate-item.rare {
+    background: linear-gradient(135deg, rgba(128, 0, 128, 0.3), rgba(200, 0, 200, 0.1));
+    border: 3px solid #800080;
+    box-shadow: 0 0 30px rgba(128, 0, 128, 0.3);
+}
+
+.crate-item.epic {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 165, 0, 0.1));
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+}
+
+/* Nickname Generator */
+.nickname-generator {
+    text-align: center;
+}
+
+.nickname-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.nickname-input {
+    background: #2a2a2a;
+    color: white;
+    border: 2px solid #f0a500;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.nickname-select {
+    background: #2a2a2a;
+    color: white;
+    border: 2px solid #f0a500;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.nickname-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.nickname-btn {
+    background: linear-gradient(45deg, #f0a500, #ff6b00);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nickname-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(240, 165, 0, 0.4);
+}
+
+#nicknameResult {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(240, 165, 0, 0.1);
+    border-radius: 12px;
+    border: 2px solid #f0a500;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-gold);
-    margin-bottom: 0.5rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
 }
 
-.stat-label {
-    color: #cccccc;
+/* Language Selector */
+.language-selector {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #444;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     font-size: 0.9rem;
 }
 
-/* ===== FOOTER ===== */
-.app-footer {
-    background: rgba(26, 26, 26, 0.95);
-    padding: 2rem 1rem;
-    text-align: center;
-    border-top: 1px solid #444;
-    margin-top: 4rem;
+.lang-btn:hover {
+    background: #f0a500;
+    color: black;
+    border-color: #f0a500;
+    transform: translateY(-2px);
 }
 
-.footer-content p {
-    margin-bottom: 0.5rem;
-    color: #cccccc;
+/* Music Player */
+.music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
-.footer-note {
-    font-size: 0.9rem;
-    color: #888 !important;
-    margin-top: 1rem;
+.music-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #f0a500;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
-/* ===== UTILITY CLASSES ===== */
-.hidden {
-    display: none !important;
+.music-btn:hover {
+    background: #f0a500;
+    color: black;
+    transform: scale(1.05);
 }
 
-.text-center {
-    text-align: center;
-}
-
-.text-gold {
-    color: var(--color-gold);
-}
-
-.text-primary {
-    color: var(--color-primary);
-}
-
-.mt-2 {
-    margin-top: 2rem;
-}
-
-.mb-2 {
-    margin-bottom: 2rem;
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease;
-}
-
-/* ===== RESPONSIVIDADE ===== */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .app-title { 
-        font-size: 2rem; 
-    }
-    
-    .app-header {
-        padding: 1.5rem 1rem;
-    }
-    
-    .nav-container { 
-        flex-direction: column; 
-        gap: 0.8rem; 
+    main {
         padding: 1rem;
     }
     
-    .nav-button { 
-        padding: 1rem 1.5rem; 
-        min-width: auto;
-        font-size: 0.9rem;
-    }
-    
-    .section { 
-        padding: 2rem 1rem; 
-    }
-    
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .hero-section h2 {
-        font-size: 2rem;
-    }
-    
-    .device-search {
+    nav {
         flex-direction: column;
+        gap: 1rem;
     }
     
-    .weapon-container {
+    .nav-links {
+        gap: 0.5rem;
+    }
+    
+    .strategy-content {
         grid-template-columns: 1fr;
     }
     
-    .strategies-content {
-        grid-template-columns: 1fr;
+    .target-area {
+        height: 200px;
     }
     
-    .config-actions {
+    .nickname-controls {
         flex-direction: column;
+        align-items: center;
+    }
+    
+    .music-player {
+        position: relative;
+        top: auto;
+        right: auto;
+        text-align: center;
+        margin: 1rem 0;
     }
 }
 
 @media (max-width: 480px) {
-    .app-title {
-        font-size: 1.8rem;
+    .feature-section {
+        padding: 1rem;
     }
     
-    .app-subtitle {
-        font-size: 1rem;
+    .sensitivity-tester {
+        padding: 1rem;
     }
     
-    .language-selector {
-        position: static;
-        margin-top: 1rem;
-        width: 100%;
-        max-width: 200px;
+    .target-area {
+        height: 150px;
     }
     
-    .feature-card,
-    .strategy-card {
-        padding: 1.5rem 1rem;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
+    .target {
+        width: 40px;
+        height: 40px;
     }
 }
     │   └── 📄 aim-trainer.css
@@ -2931,6 +2462,286 @@ setupAudioControls() {
         });
     }
 }
+    │   ├──js/app.js
+    // =============================================
+// WEAPON SENSITIVITY DATA
+// =============================================
+const weaponData = {
+    akm: {
+        sensitivity: "38-45%",
+        recoil: "High vertical recoil → pull down",
+        pattern: "Pattern: Vertical with slight right curve",
+        tips: "Tip: Use compensator and stock"
+    },
+    m416: {
+        sensitivity: "45-55%", 
+        recoil: "Moderate recoil → smooth control",
+        pattern: "Pattern: Light 'S' shape",
+        tips: "Tip: Very stable with full attachments"
+    },
+    scar-l: {
+        sensitivity: "42-50%",
+        recoil: "Low recoil → easy control", 
+        pattern: "Pattern: Almost vertical",
+        tips: "Tip: Excellent for beginners"
+    }
+};
+
+// Initialize weapon sensitivity
+function initializeWeaponSensitivity() {
+    const weaponSelect = document.getElementById('weaponSelect');
+    const weaponStats = document.getElementById('weaponStats');
+    
+    function updateWeaponInfo() {
+        const selectedWeapon = weaponSelect.value;
+        const stats = weaponData[selectedWeapon];
+        
+        if (stats) {
+            weaponStats.innerHTML = `
+                <strong>Recommended Sensitivity:</strong> ${stats.sensitivity}<br>
+                <strong>Recoil Control:</strong> ${stats.recoil}<br>
+                <strong>${stats.pattern}</strong><br>
+                <em>${stats.tips}</em>
+            `;
+        }
+    }
+    
+    // Add event listener
+    weaponSelect.addEventListener('change', updateWeaponInfo);
+    
+    // Initialize with first weapon
+    updateWeaponInfo();
+}
+
+// =============================================
+// GRAPHICS OPTIMIZER
+// =============================================
+const deviceProfiles = {
+    lowEnd: {
+        graphics: "Smooth",
+        fps: "Medium",
+        shadows: "Disabled", 
+        antiAliasing: "Disabled",
+        tips: "Focus on performance - best FPS for basic devices"
+    },
+    midRange: {
+        graphics: "Balanced",
+        fps: "High", 
+        shadows: "Disabled",
+        antiAliasing: "Enabled",
+        tips: "Perfect balance between visuals and performance"
+    },
+    highEnd: {
+        graphics: "HDR",
+        fps: "Ultra",
+        shadows: "Enabled",
+        antiAliasing: "Enabled", 
+        tips: "Best visual experience - for flagship devices only"
+    }
+};
+
+function optimizeGraphics() {
+    // Simulate device detection
+    const userAgent = navigator.userAgent;
+    let profile;
+    
+    if (/iPhone X|iPhone 11|iPhone 12|iPhone 13|iPhone 14|iPhone 15|Galaxy S2[0-9]|Pixel [6-9]/i.test(userAgent)) {
+        profile = deviceProfiles.highEnd;
+    } else if (/iPhone [6-9]|Galaxy A|Redmi Note|Moto G/i.test(userAgent)) {
+        profile = deviceProfiles.lowEnd;
+    } else {
+        profile = deviceProfiles.midRange;
+    }
+    
+    displayOptimization(profile);
+}
+
+function displayOptimization(profile) {
+    const graphicsSettings = document.getElementById('graphicsSettings');
+    graphicsSettings.innerHTML = `
+        <h3>⚙️ Optimized Settings for Your Device:</h3>
+        <div class="settings-grid">
+            <p>🎨 <strong>Graphics Quality:</strong> ${profile.graphics}</p>
+            <p>📊 <strong>Frame Rate:</strong> ${profile.fps}</p>
+            <p>🌑 <strong>Shadows:</strong> ${profile.shadows}</p>
+            <p>🔍 <strong>Anti-Aliasing:</strong> ${profile.antiAliasing}</p>
+            <p>💡 <strong>Tip:</strong> ${profile.tips}</p>
+        </div>
+    `;
+}
+
+// =============================================
+// CRATE SIMULATOR
+// =============================================
+const crateItems = {
+    common: [
+        { name: "Blue T-Shirt", probability: 0.35, rarity: "common" },
+        { name: "Jeans Pants", probability: 0.30, rarity: "common" },
+        { name: "Level 1 Helmet", probability: 0.25, rarity: "common" },
+        { name: "Level 1 Backpack", probability: 0.20, rarity: "common" }
+    ],
+    rare: [
+        { name: "AKM Gold Skin", probability: 0.15, rarity: "rare" },
+        { name: "Military Outfit", probability: 0.12, rarity: "rare" }, 
+        { name: "Level 3 Backpack", probability: 0.08, rarity: "rare" },
+        { name: "Level 3 Camo Helmet", probability: 0.05, rarity: "rare" }
+    ],
+    epic: [
+        { name: "M416 Legendary Skin", probability: 0.04, rarity: "epic" },
+        { name: "Golden Parachute", probability: 0.02, rarity: "epic" },
+        { name: "Specialist Outfit", probability: 0.015, rarity: "epic" }
+    ]
+};
+
+function openCrate() {
+    const random = Math.random();
+    let item;
+    
+    if (random < 0.60) {
+        // 60% common
+        item = getRandomItem(crateItems.common);
+    } else if (random < 0.90) {
+        // 30% rare  
+        item = getRandomItem(crateItems.rare);
+    } else {
+        // 10% epic
+        item = getRandomItem(crateItems.epic);
+    }
+    
+    displayCrateResult(item);
+}
+
+function getRandomItem(itemArray) {
+    return itemArray[Math.floor(Math.random() * itemArray.length)];
+}
+
+function displayCrateResult(item) {
+    const resultDiv = document.getElementById('crateResult');
+    const rarityColor = item.rarity === 'common' ? '#0066ff' : 
+                       item.rarity === 'rare' ? '#800080' : '#ffd700';
+    
+    resultDiv.innerHTML = `
+        <div class="crate-item ${item.rarity}">
+            <h3 style="color: ${rarityColor}">🎁 ${item.name}</h3>
+            <p><strong>Rarity:</strong> ${item.rarity.toUpperCase()}</p>
+            <p><strong>Probability:</strong> ${(item.probability * 100).toFixed(1)}%</p>
+            <p>${getCrateMessage(item.rarity)}</p>
+        </div>
+    `;
+}
+
+function getCrateMessage(rarity) {
+    const messages = {
+        common: "Basic item - keep trying!",
+        rare: "Good! Quality item!",
+        epic: "🎉 LEGENDARY! You're lucky!"
+    };
+    return messages[rarity];
+}
+
+// =============================================
+// NICKNAME GENERATOR
+// =============================================
+const nicknameTemplates = {
+    professional: ["Pro", "Elite", "Master", "Ace", "Tactical", "Veteran"],
+    aggressive: ["Killer", "Slayer", "Hunter", "Predator", "Assassin", "Reaper"],
+    tactical: ["Ghost", "Shadow", "Phantom", "Stealth", "Silent", "Ninja"],
+    funny: ["Chicken", "Noob", "Camper", "Bush", "Potato", "Bot"]
+};
+
+function generateNickname() {
+    const style = document.getElementById('nicknameStyle').value;
+    const baseName = document.getElementById('baseName').value || "Player";
+    
+    const templates = nicknameTemplates[style];
+    const randomTemplate = templates[Math.floor(Math.random() * templates.length)];
+    
+    // Special symbols allowed in PUBG
+    const symbols = ["×", "★", "☆", "㊣", "◎", "●", "◆", "■", "▲", "▼"];
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+    
+    const nickname = `${baseName}${randomSymbol}${randomTemplate}`;
+    document.getElementById('nicknameResult').textContent = nickname;
+}
+
+function copyNickname() {
+    const nickname = document.getElementById('nicknameResult').textContent;
+    if (!nickname) {
+        alert("Generate a nickname first!");
+        return;
+    }
+    
+    navigator.clipboard.writeText(nickname).then(() => {
+        alert("✅ Nickname copied to clipboard!");
+    }).catch(err => {
+        // Fallback for old browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = nickname;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert("✅ Nickname copied!");
+    });
+}
+
+// =============================================
+// MUSIC PLAYER
+// =============================================
+let musicPlaying = false;
+const backgroundMusic = new Audio('audio/background-music.mp3');
+backgroundMusic.loop = true;
+
+function toggleMusic() {
+    if (musicPlaying) {
+        backgroundMusic.pause();
+        musicPlaying = false;
+        event.target.textContent = "🔇 Music";
+    } else {
+        backgroundMusic.play().catch(error => {
+            console.log("Autoplay prevented: ", error);
+            alert("Click 'Music' again to play!");
+        });
+        musicPlaying = true;
+        event.target.textContent = "🔊 Music";
+    }
+}
+
+// =============================================
+// SMOOTH SCROLLING FOR NAVIGATION
+// =============================================
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// =============================================
+// INITIALIZE EVERYTHING WHEN PAGE LOADS
+// =============================================
+document.addEventListener('DOMContentLoaded', function() {
+    initializeWeaponSensitivity();
+    initializeSmoothScroll();
+    
+    // Add music player to the page if it doesn't exist
+    if (!document.querySelector('.music-player')) {
+        const musicPlayer = document.createElement('div');
+        musicPlayer.className = 'music-player';
+        musicPlayer.innerHTML = '<button class="music-btn" onclick="toggleMusic()">🔇 Music</button>';
+        document.body.appendChild(musicPlayer);
+    }
+    
+    console.log("PUBG Coach Pro initialized successfully! 🎮");
+});
     │   ├── 📄 storage.js
     // === SISTEMA DE SALVAMENTO DE CONFIGURAÇÕES ===
 class StorageManager {
@@ -3952,7 +3763,8 @@ class AudioManager {
         return this.isMuted;
     }
 }
-
+    ├── audio/
+        └── background-music.mp3
 // Instância global do gerenciador de áudio
 const audioManager = new AudioManager();
     │
@@ -3991,6 +3803,8 @@ const audioManager = new AudioManager();
   ],
   "categories": ["games", "entertainment", "education"]
 }
+        ├── images/
+            └──favicon.pgn
         ├── 📄 apple-touch-icon.png
         ├── 📄 favicon-32x32.png
         ├── 📄 favicon-16x16.png
