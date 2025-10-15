@@ -3214,12 +3214,16 @@ const audioManager = new AudioManager();
         ├── 📄 favicon-32x32.png
         ├── 📄 favicon-16x16.png
         └── 📄 icon-512x512.png
-    ├── images/
-            └──<favicon.png<img width="566" height="724" alt="favicon.png.ico src="https://github.com/user-attachments/assets/9a5fa0e2-b35d-4d6e-a95b-169dfe370de5" />
+  ├── images/
+            └──favicon-icon.png
+[Favicon png.zip](https://github.com/user-attachments/files/22937709/Favicon.png.zip)
 
             
-    ├── audio/
-        └──<[Background-music.mp3 
-        [Background-music.zip](https://github.com/user-attachments/files/22937527/Background-music.zip)
+├── audio/
+    └──[Background-music.mp3.zip](https://github.com/user-attachments/files/22937693/Background-music.mp3.zip)
+
+
+         
+        
 
 
